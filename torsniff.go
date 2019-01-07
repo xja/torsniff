@@ -237,8 +237,8 @@ func (t *torsniff) saveTorrent(infohashHex string, data []byte) (string, error) 
 }
 
 func (t *torsniff) torrentPath(infohashHex string) (name string, dir string) {
-	dir = path.Join(t.dir, infohashHex[:2], infohashHex[len(infohashHex)-2:])
-	name = path.Join(dir, infohashHex+".torrent")
+	dir = path.Join(t.dir, infohashHex[:2])
+	name = path.Join(dir, t.name + time.Now().Format("20060102150405") + t.size/1024/1024 +"GB.torrent")
 	return
 }
 
